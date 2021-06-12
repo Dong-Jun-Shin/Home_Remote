@@ -12,6 +12,7 @@ public class BleVO{
     public static var characteristic: CBCharacteristic!
     public static var peripheralObj: CBPeripheral!
     public static var soundFuncState: Bool = false
+    public static var windFuncState: Bool = false
     
     public static func setBleObj(peripheralObj: CBPeripheral,
                       centralManager: CBCentralManager, characteristic: CBCharacteristic?){

@@ -130,7 +130,7 @@ extension SettingController: CBPeripheralDelegate,  CBCentralManagerDelegate{
         if strArr.count == 3 {
             let cdsFuncArr = strArr[0].split(separator: ",")
             let autoFuncArr = strArr[1].split(separator: ",")
-            let soundFuncArr = strArr[2].split(separator: ",")
+            let deviceFuncArr = strArr[2].split(separator: ",")
         
             if cdsFuncArr.count == 4 {
                 let cdsFuncSwitch = cdsFuncArr[0]
@@ -154,9 +154,12 @@ extension SettingController: CBPeripheralDelegate,  CBCentralManagerDelegate{
                 autoFanChk.isOn = stringToBool(val: autoFanSwitch)
             }
             
-            if soundFuncArr.count == 1 {
-                let sountFuncSwitch = soundFuncArr[0]
+            if deviceFuncArr.count == 2 {
+                let sountFuncSwitch = deviceFuncArr[0]
+                let windFuncSwitch = deviceFuncArr[1]
+                
                 BleVO.soundFuncState = stringToBool(val: sountFuncSwitch)
+                BleVO.windFuncState = stringToBool(val: windFuncSwitch)
             }
         }
     }

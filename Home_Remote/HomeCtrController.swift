@@ -11,6 +11,7 @@ import MyFrame
 
 class HomeCtrController: UIViewController {
     @IBOutlet weak var soundFuncChk: UISwitch!
+    @IBOutlet weak var windFuncChk: UISwitch!
     @IBOutlet weak var airconOn: UIButton!
     @IBOutlet weak var airconOff: UIButton!
     @IBOutlet weak var blindUp: UIButton!
@@ -52,6 +53,7 @@ class HomeCtrController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         soundFuncChk.isOn = BleVO.soundFuncState
+        windFuncChk.isOn = BleVO.windFuncState
     }
     
     /*BLE 문자 데이터 생성 및 호출 함수*/

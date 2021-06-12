@@ -179,6 +179,7 @@ extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
         alertConnection(title: "연결 해제", content: content)
         changeConImage(iconName: "bt_uncon", message: "홈 IoT 연결 상태 (Disconnect)")
         tempInitSet(nsStr: "")
+        tempArrInitSet(nsStr: "")
     }
     
     /*특정 BLE장치 탐색 시작부*/
@@ -241,9 +242,11 @@ extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
             
             if strData=="Z" {
                 tempInitSet(nsStr: stringFromData)
+                //샘플 확인용 차트 설정
+                tempArrInitSet(nsStr: stringFromData)
                 
                 strData = "?"
-                sendData(strData: "Z")
+                //sendData(strData: "Z")
             }else if strData=="?"{
                 tempArrInitSet(nsStr: stringFromData)
             }
