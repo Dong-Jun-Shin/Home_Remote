@@ -12,7 +12,6 @@ import MyFrame
 class SettingController: UIViewController {
     @IBOutlet weak var cdsFuncChk: UISwitch!
     @IBOutlet weak var airconChk: UISwitch!
-    @IBOutlet weak var lightChk: UISwitch!
     @IBOutlet weak var fanChk: UISwitch!
     @IBOutlet weak var autoFuncChk: UISwitch!
     @IBOutlet weak var autoAirconChk: UISwitch!
@@ -27,11 +26,9 @@ class SettingController: UIViewController {
     @IBAction func changeCdsFunc(_ sender: Any) {
         if cdsFuncChk.isOn {
             airconChk.isEnabled = true
-            lightChk.isEnabled = true
             fanChk.isEnabled = true
         }else{
             airconChk.isEnabled = false
-            lightChk.isEnabled = false
             fanChk.isEnabled = false
         }
         
@@ -132,15 +129,13 @@ extension SettingController: CBPeripheralDelegate,  CBCentralManagerDelegate{
             let autoFuncArr = strArr[1].split(separator: ",")
             let deviceFuncArr = strArr[2].split(separator: ",")
         
-            if cdsFuncArr.count == 4 {
+            if cdsFuncArr.count == 3 {
                 let cdsFuncSwitch = cdsFuncArr[0]
                 let airconSwitch = cdsFuncArr[1]
-                let lightSwitch = cdsFuncArr[2]
-                let fanSwitch = cdsFuncArr[3]
+                let fanSwitch = cdsFuncArr[2]
                 
                 cdsFuncChk.isOn = stringToBool(val: cdsFuncSwitch)
                 airconChk.isOn = stringToBool(val: airconSwitch)
-                lightChk.isOn = stringToBool(val: lightSwitch)
                 fanChk.isOn = stringToBool(val: fanSwitch)
             }
             
