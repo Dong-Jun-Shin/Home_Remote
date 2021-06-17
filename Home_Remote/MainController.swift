@@ -24,6 +24,7 @@ class MainController: UIViewController {
     let deviceCharCBUUID = CBUUID(string: "FFE1")
     let data = NSMutableData()
     var strData = ""
+    var centralManager: CBCentralManager!
     
     /*NavBar 컬러 변경*/
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -32,6 +33,9 @@ class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        centralManager = CBCentralManager(delegate: self, queue: .main)
+        
         // 차트 설정
         // 데이터 없을 시, 설정
         lineChartView.noDataText = "온도 데이터가 없습니다."
@@ -48,6 +52,11 @@ class MainController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
         //연결 아이콘 변경
+        initMainTap()
+    }
+    
+    /*장치 연결 시, 메인 탭 셋팅*/
+    func initMainTap(){
         if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
             // 연결 상태 아이콘 변경
             changeConImage(iconName: "bt_con", message: "홈 IoT 연결 상태 (Connect)")
@@ -184,30 +193,37 @@ extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
     
     /*특정 BLE장치 탐색 시작부*/
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        
         if central.state == .poweredOn {
-            central.scanForPeripherals(withServices: [deviceCharCBUUID], options: nil)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20, execute: {
-                if central.isScanning {
-                    central.stopScan()
+            //연결 객체가 없을 경우, 자동 연결
+            if(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+                if(centralManager.isScanning) {
+                    centralManager.stopScan()
                 }
-            })
+                centralManager.scanForPeripherals(withServices: nil, options: nil)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20, execute: {
+                    if self.centralManager.isScanning {
+                        self.centralManager.stopScan()
+                    }
+                })
+            }
         }
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if peripheral.name == "PROJECT_BLE" {
-            BleVO.centralManager.stopScan()
-            BleVO.centralManager.connect(peripheral)
+            BleVO.centralManager = central
+            BleVO.peripheralObj = peripheral
+            
+            central.connect(peripheral, options: nil)
         }
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        BleVO.centralManager = central
-        BleVO.peripheralObj = peripheral
+        central.stopScan()
         
         peripheral.delegate = self
-        peripheral.discoverServices([deviceCharCBUUID])
+        peripheral.discoverServices(nil)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
@@ -222,6 +238,7 @@ extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
             BleVO.characteristic = character
             peripheral.setNotifyValue(true, for: character)
         }
+        initMainTap()
     }
     /*특정 BLE장치 탐색 종료부*/
     
