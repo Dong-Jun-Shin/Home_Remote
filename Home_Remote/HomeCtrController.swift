@@ -27,7 +27,7 @@ class HomeCtrController: UIViewController {
     /*버튼 터치 시, 해당 BLE 문자 전송하는 함수*/
     @IBAction func buttonTapped(btn : UIButton){
         guard let strDataParam = btn.restorationIdentifier else { return }
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState() {
             sendData(strData: strDataParam)
         }
     }
@@ -35,7 +35,7 @@ class HomeCtrController: UIViewController {
     /*Switch 세부 기능 값 변경 시, BLE 문자 전송 함수*/
     @IBAction func changeFunc(switchObj : UISwitch) {
         guard let strDataParam = switchObj.restorationIdentifier else { return }
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState(){
             sendData(strData: strDataParam)
         }
     }

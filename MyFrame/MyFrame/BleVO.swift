@@ -22,4 +22,10 @@ public class BleVO{
             self.characteristic = characteristic
         }
     }
+    
+    public static func connectState() -> Bool{
+        let state = !(centralManager == nil || characteristic == nil || peripheralObj == nil)
+        
+        return state
+    }
 }

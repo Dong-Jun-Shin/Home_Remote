@@ -44,7 +44,7 @@ class SettingController: UIViewController {
     /*Switch 세부 기능 값 변경 시, BLE 문자 전송 함수*/
     @IBAction func changeFunc(switchObj : UISwitch) {
         guard let strDataParam = switchObj.restorationIdentifier else { return }
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState() {
             sendData(strData: strDataParam)
         }
     }
@@ -52,7 +52,7 @@ class SettingController: UIViewController {
     /*설정 시간 입력 시, BLE 문자 전송 함수*/
     @IBAction func sendSetTime(txtField: UITextField) {
         guard let strDataParam = txtField.text else { return }
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState() {
             let setData = txtField.restorationIdentifier! + "," + strDataParam
             sendData(strData: setData)
         }
@@ -73,7 +73,7 @@ class SettingController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
         //자동기능 관련 값 설정
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState() {
             BleVO.peripheralObj.delegate = self
             sendData(strData: "z")
         }
@@ -98,6 +98,7 @@ class SettingController: UIViewController {
     }
 }
 
+/*블루투스 관련 확장 SettingController*/
 extension SettingController: CBPeripheralDelegate,  CBCentralManagerDelegate{
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
     }
