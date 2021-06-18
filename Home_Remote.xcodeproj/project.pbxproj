@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A678D95267B438000B0AF48 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A678D93267B438000B0AF48 /* Interface.storyboard */; };
+		1A678D97267B438100B0AF48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A678D96267B438100B0AF48 /* Assets.xcassets */; };
+		1A678D9E267B438100B0AF48 /* Home_Remote_WC Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1A678D9D267B438100B0AF48 /* Home_Remote_WC Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1A678DA3267B438100B0AF48 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A678DA2267B438100B0AF48 /* InterfaceController.swift */; };
+		1A678DA5267B438100B0AF48 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A678DA4267B438100B0AF48 /* ExtensionDelegate.swift */; };
+		1A678DA7267B438100B0AF48 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A678DA6267B438100B0AF48 /* NotificationController.swift */; };
+		1A678DA9267B438100B0AF48 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A678DA8267B438100B0AF48 /* ComplicationController.swift */; };
+		1A678DAB267B438200B0AF48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A678DAA267B438200B0AF48 /* Assets.xcassets */; };
+		1A678DB0267B438200B0AF48 /* Home_Remote_WC.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1A678D91267B438000B0AF48 /* Home_Remote_WC.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1A798622266493460091BA79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A798621266493460091BA79 /* AppDelegate.swift */; };
 		1A798624266493460091BA79 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A798623266493460091BA79 /* SceneDelegate.swift */; };
 		1A798626266493460091BA79 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A798625266493460091BA79 /* MainController.swift */; };
@@ -24,7 +33,46 @@
 		FFD53CDA1F7ADFA26980EF44 /* Pods_Home_Remote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214B1F77FB1692A07A5B8A9A /* Pods_Home_Remote.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1A678D9F267B438100B0AF48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A798616266493460091BA79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A678D9C267B438100B0AF48;
+			remoteInfo = "Home_Remote_WC Extension";
+		};
+		1A678DAE267B438200B0AF48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1A798616266493460091BA79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A678D90267B438000B0AF48;
+			remoteInfo = Home_Remote_WC;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		1A678DB4267B438200B0AF48 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1A678D9E267B438100B0AF48 /* Home_Remote_WC Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A678DB8267B438200B0AF48 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				1A678DB0267B438200B0AF48 /* Home_Remote_WC.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1A82B2092669FEFB00604E2C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -40,6 +88,18 @@
 
 /* Begin PBXFileReference section */
 		03FD61D51C6FCE1E28E4A615 /* Pods-Home_Remote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home_Remote.debug.xcconfig"; path = "Target Support Files/Pods-Home_Remote/Pods-Home_Remote.debug.xcconfig"; sourceTree = "<group>"; };
+		1A678D91267B438000B0AF48 /* Home_Remote_WC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Remote_WC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A678D94267B438000B0AF48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		1A678D96267B438100B0AF48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A678D98267B438100B0AF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A678D9D267B438100B0AF48 /* Home_Remote_WC Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Home_Remote_WC Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A678DA2267B438100B0AF48 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		1A678DA4267B438100B0AF48 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		1A678DA6267B438100B0AF48 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		1A678DA8267B438100B0AF48 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		1A678DAA267B438200B0AF48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A678DAC267B438200B0AF48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A678DAD267B438200B0AF48 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		1A79861E266493460091BA79 /* Home_Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Home_Remote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A798621266493460091BA79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A798623266493460091BA79 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +120,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1A678D9A267B438100B0AF48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1A79861B266493460091BA79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -74,10 +141,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A678D92267B438000B0AF48 /* Home_Remote_WC */ = {
+			isa = PBXGroup;
+			children = (
+				1A678D93267B438000B0AF48 /* Interface.storyboard */,
+				1A678D96267B438100B0AF48 /* Assets.xcassets */,
+				1A678D98267B438100B0AF48 /* Info.plist */,
+			);
+			path = Home_Remote_WC;
+			sourceTree = "<group>";
+		};
+		1A678DA1267B438100B0AF48 /* Home_Remote_WC Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1A678DA2267B438100B0AF48 /* InterfaceController.swift */,
+				1A678DA4267B438100B0AF48 /* ExtensionDelegate.swift */,
+				1A678DA6267B438100B0AF48 /* NotificationController.swift */,
+				1A678DA8267B438100B0AF48 /* ComplicationController.swift */,
+				1A678DAA267B438200B0AF48 /* Assets.xcassets */,
+				1A678DAC267B438200B0AF48 /* Info.plist */,
+				1A678DAD267B438200B0AF48 /* PushNotificationPayload.apns */,
+			);
+			path = "Home_Remote_WC Extension";
+			sourceTree = "<group>";
+		};
 		1A798615266493460091BA79 = {
 			isa = PBXGroup;
 			children = (
 				1A798620266493460091BA79 /* Home_Remote */,
+				1A678D92267B438000B0AF48 /* Home_Remote_WC */,
+				1A678DA1267B438100B0AF48 /* Home_Remote_WC Extension */,
 				1A79861F266493460091BA79 /* Products */,
 				1A798635266493A10091BA79 /* Frameworks */,
 				28D22D7C8DBC9E71C4667906 /* Pods */,
@@ -88,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				1A79861E266493460091BA79 /* Home_Remote.app */,
+				1A678D91267B438000B0AF48 /* Home_Remote_WC.app */,
+				1A678D9D267B438100B0AF48 /* Home_Remote_WC Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,6 +228,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1A678D90267B438000B0AF48 /* Home_Remote_WC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A678DB5267B438200B0AF48 /* Build configuration list for PBXNativeTarget "Home_Remote_WC" */;
+			buildPhases = (
+				1A678D8F267B438000B0AF48 /* Resources */,
+				1A678DB4267B438200B0AF48 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1A678DA0267B438100B0AF48 /* PBXTargetDependency */,
+			);
+			name = Home_Remote_WC;
+			productName = Home_Remote_WC;
+			productReference = 1A678D91267B438000B0AF48 /* Home_Remote_WC.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		1A678D9C267B438100B0AF48 /* Home_Remote_WC Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A678DB1267B438200B0AF48 /* Build configuration list for PBXNativeTarget "Home_Remote_WC Extension" */;
+			buildPhases = (
+				1A678D99267B438100B0AF48 /* Sources */,
+				1A678D9A267B438100B0AF48 /* Frameworks */,
+				1A678D9B267B438100B0AF48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Home_Remote_WC Extension";
+			productName = "Home_Remote_WC Extension";
+			productReference = 1A678D9D267B438100B0AF48 /* Home_Remote_WC Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		1A79861D266493460091BA79 /* Home_Remote */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1A798632266493470091BA79 /* Build configuration list for PBXNativeTarget "Home_Remote" */;
@@ -143,10 +272,12 @@
 				1A79861C266493460091BA79 /* Resources */,
 				64CB22BA0D16255C5A1B6C15 /* [CP] Embed Pods Frameworks */,
 				1A82B2092669FEFB00604E2C /* Embed Frameworks */,
+				1A678DB8267B438200B0AF48 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1A678DAF267B438200B0AF48 /* PBXTargetDependency */,
 			);
 			name = Home_Remote;
 			productName = Home_Remote;
@@ -162,6 +293,12 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					1A678D90267B438000B0AF48 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					1A678D9C267B438100B0AF48 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					1A79861D266493460091BA79 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -181,11 +318,30 @@
 			projectRoot = "";
 			targets = (
 				1A79861D266493460091BA79 /* Home_Remote */,
+				1A678D90267B438000B0AF48 /* Home_Remote_WC */,
+				1A678D9C267B438100B0AF48 /* Home_Remote_WC Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1A678D8F267B438000B0AF48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A678D97267B438100B0AF48 /* Assets.xcassets in Resources */,
+				1A678D95267B438000B0AF48 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A678D9B267B438100B0AF48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A678DAB267B438200B0AF48 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1A79861C266493460091BA79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +397,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1A678D99267B438100B0AF48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A678DA7267B438100B0AF48 /* NotificationController.swift in Sources */,
+				1A678DA9267B438100B0AF48 /* ComplicationController.swift in Sources */,
+				1A678DA5267B438100B0AF48 /* ExtensionDelegate.swift in Sources */,
+				1A678DA3267B438100B0AF48 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1A79861A266493460091BA79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,7 +424,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1A678DA0267B438100B0AF48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A678D9C267B438100B0AF48 /* Home_Remote_WC Extension */;
+			targetProxy = 1A678D9F267B438100B0AF48 /* PBXContainerItemProxy */;
+		};
+		1A678DAF267B438200B0AF48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1A678D90267B438000B0AF48 /* Home_Remote_WC */;
+			targetProxy = 1A678DAE267B438200B0AF48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		1A678D93267B438000B0AF48 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1A678D94267B438000B0AF48 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		1A798627266493460091BA79 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -277,6 +465,92 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1A678DB2267B438200B0AF48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Home_Remote_WC Extension/Home_Remote_WC Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97R8SRRXCS;
+				INFOPLIST_FILE = "Home_Remote_WC Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SDJ.Home-Remote.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		1A678DB3267B438200B0AF48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "Home_Remote_WC Extension/Home_Remote_WC Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97R8SRRXCS;
+				INFOPLIST_FILE = "Home_Remote_WC Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SDJ.Home-Remote.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		1A678DB6267B438200B0AF48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97R8SRRXCS;
+				IBSC_MODULE = Home_Remote_WC_Extension;
+				INFOPLIST_FILE = Home_Remote_WC/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SDJ.Home-Remote.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		1A678DB7267B438200B0AF48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 97R8SRRXCS;
+				IBSC_MODULE = Home_Remote_WC_Extension;
+				INFOPLIST_FILE = Home_Remote_WC/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.SDJ.Home-Remote.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
 		1A798630266493470091BA79 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -399,6 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Home_Remote/Home_Remote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97R8SRRXCS;
 				INFOPLIST_FILE = Home_Remote/Info.plist;
@@ -419,6 +694,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Home_Remote/Home_Remote.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 97R8SRRXCS;
 				INFOPLIST_FILE = Home_Remote/Info.plist;
@@ -436,6 +712,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1A678DB1267B438200B0AF48 /* Build configuration list for PBXNativeTarget "Home_Remote_WC Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A678DB2267B438200B0AF48 /* Debug */,
+				1A678DB3267B438200B0AF48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A678DB5267B438200B0AF48 /* Build configuration list for PBXNativeTarget "Home_Remote_WC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A678DB6267B438200B0AF48 /* Debug */,
+				1A678DB7267B438200B0AF48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1A798619266493460091BA79 /* Build configuration list for PBXProject "Home_Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

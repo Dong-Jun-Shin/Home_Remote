@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch44"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="18022"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller spacing="10" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Home_Remote_WC" customModuleProvider="target">
+                    <items>
+                        <label width="1" alignment="left" text="Wait Command..." id="K6l-U8-n11"/>
+                        <group width="1" alignment="left" spacing="10" id="QIl-Tv-KXU">
+                            <items>
+                                <button width="85" height="85" alignment="left" backgroundImage="discon" id="OpY-ea-2dc">
+                                    <connections>
+                                        <action selector="bleConnectToiPhone" destination="AgC-eL-Hgc" id="yaP-Cj-HP0"/>
+                                    </connections>
+                                </button>
+                                <button width="85" height="85" alignment="left" backgroundImage="light_watch" id="Xnv-uw-mox">
+                                    <connections>
+                                        <action selector="lightPowerToiPhone" destination="AgC-eL-Hgc" id="M8b-SQ-3hK"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" spacing="10" id="D92-SU-nzT">
+                            <items>
+                                <button width="85" height="85" alignment="left" backgroundImage="fan_watch" id="Rd4-AH-PhX">
+                                    <connections>
+                                        <action selector="fanPowerToiPhone" destination="AgC-eL-Hgc" id="dmZ-c1-6OY"/>
+                                    </connections>
+                                </button>
+                                <button width="85" height="85" alignment="left" backgroundImage="aircon" id="Umd-Sb-Jb0">
+                                    <connections>
+                                        <action selector="airconPowerToiPhone" destination="AgC-eL-Hgc" id="sPs-m4-CvA"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="airconPower" destination="Umd-Sb-Jb0" id="plX-Yb-nEp"/>
+                        <outlet property="blePower" destination="OpY-ea-2dc" id="moZ-gi-S2o"/>
+                        <outlet property="fanPower" destination="Rd4-AH-PhX" id="POr-iz-7gC"/>
+                        <outlet property="lblOfState" destination="K6l-U8-n11" id="sR5-D0-cUX"/>
+                        <outlet property="lightPower" destination="Xnv-uw-mox" id="i3O-hu-FKo"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="219.52173913043478" y="344.17410714285717"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Home_Remote_WC" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Home_Remote_WC" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="aircon" width="80" height="80"/>
+        <image name="discon" width="80" height="80"/>
+        <image name="fan_watch" width="80.5" height="80.5"/>
+        <image name="light_watch" width="80" height="80.5"/>
+    </resources>
+</document>

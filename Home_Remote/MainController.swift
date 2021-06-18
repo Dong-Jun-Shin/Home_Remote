@@ -9,6 +9,7 @@ import UIKit
 import CoreBluetooth
 import Charts
 import MyFrame
+import WatchConnectivity
 
 class MainController: UIViewController {
     @IBOutlet weak var lblOfTemp: UILabel!
@@ -25,6 +26,9 @@ class MainController: UIViewController {
     let data = NSMutableData()
     var strData = ""
     var centralManager: CBCentralManager!
+    var session: WCSession?
+    var lightCmd = "W"
+    var airconCmd = "a"
     
     /*NavBar 컬러 변경*/
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -34,17 +38,14 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Watch Session 설정
+        self.configureWatchKitSession()
+        
+        //BLE Manager 설정
         centralManager = CBCentralManager(delegate: self, queue: .main)
         
-        // 차트 설정
-        // 데이터 없을 시, 설정
-        lineChartView.noDataText = "온도 데이터가 없습니다."
-        lineChartView.noDataFont = .systemFont(ofSize: 20)
-        lineChartView.noDataTextColor = .systemGray
-        
-        barChartView.noDataText = "습도 데이터가 없습니다."
-        barChartView.noDataFont = .systemFont(ofSize: 20)
-        barChartView.noDataTextColor = .systemGray
+        //차트 설정
+        initCharts()
     }
     
     /*NavBar hide 함수*/
@@ -55,9 +56,30 @@ class MainController: UIViewController {
         initMainTap()
     }
     
+    /*Watch Session 설정*/
+    func configureWatchKitSession(){
+        if WCSession.isSupported(){
+            session = WCSession.default
+            session?.delegate = self
+            session?.activate()
+        }
+    }
+    
+    /*차트 설정*/
+    func initCharts(){
+        // 데이터 없을 시, 설정
+        lineChartView.noDataText = "온도 데이터가 없습니다."
+        lineChartView.noDataFont = .systemFont(ofSize: 20)
+        lineChartView.noDataTextColor = .systemGray
+        
+        barChartView.noDataText = "습도 데이터가 없습니다."
+        barChartView.noDataFont = .systemFont(ofSize: 20)
+        barChartView.noDataTextColor = .systemGray
+    }
+    
     /*장치 연결 시, 메인 탭 셋팅*/
     func initMainTap(){
-        if !(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+        if BleVO.connectState() {
             // 연결 상태 아이콘 변경
             changeConImage(iconName: "bt_con", message: "홈 IoT 연결 상태 (Connect)")
             
@@ -164,7 +186,99 @@ class MainController: UIViewController {
     }
 }
 
-/*블루투스 관련 확장 BleScanController*/
+/*Watch Session 관련 확장 MainController*/
+extension MainController: WCSessionDelegate{
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
+    
+    /*(Watch > iPhone) 데이터 수신*/
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        DispatchQueue.main.async{
+            if let value = message["watch"] as? String{
+                switch value {
+                case "init":
+                    //BLE 객체 상태 판단 후, 문자 전달
+                    var str = ""
+                    
+                    if !BleVO.connectState() {
+                        str = "unconnect"
+                    } else {
+                        str = "connect"
+                    }
+                    
+                    self.sendToWatchData(str: str)
+                case "ble":
+                    //연결 객체가 없을 경우, 연결 요청
+                    if !BleVO.connectState() {
+                        if(self.centralManager.isScanning) {
+                            self.centralManager.stopScan()
+                        }
+                        self.centralManager.scanForPeripherals(withServices: nil, options: nil)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20, execute: {
+                            if self.centralManager.isScanning {
+                                self.centralManager.stopScan()
+                            }
+                        })
+                    }
+                case "light":
+                    //누를 때마다, 전등 켬W와 끔X 번갈아 전송
+                    if BleVO.connectState() {
+                        self.sendData(strData: self.lightCmd)
+                    }
+                    
+                    if self.lightCmd == "W" {
+                        self.lightCmd = "X"
+                    } else if self.lightCmd == "X" {
+                        self.lightCmd = "W"
+                    }
+                case "fan":
+                    //전원 A, 예약 C 2번, 1초 간격 전송
+                    if BleVO.connectState() {
+                        self.sendData(strData: "A")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute:
+                                                        {self.sendData(strData: "C")}
+                        )
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute:
+                                                        {self.sendData(strData: "C")}
+                        )
+                    }
+                case "aircon":
+                    //누를 때마다, 에어컨 켬a와 끔c 번갈아 전송
+                    if BleVO.connectState() {
+                        self.sendData(strData: self.airconCmd)
+                    }
+                    
+                    if self.airconCmd == "a" {
+                        self.airconCmd = "c"
+                    } else if self.airconCmd == "c" {
+                        self.airconCmd = "a"
+                    }
+                default:
+                    print("irregularity value")
+                }
+            }
+        }
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+    }
+    
+    /*(iPhone > Watch) 데이터 송신*/
+    func sendToWatchData(str : String) {
+        if let validSession = self.session{
+            let data: [String: Any] = ["iPhone": str as Any]
+            
+            validSession.sendMessage(data, replyHandler: {(replyDict) in print(replyDict)}, errorHandler: {(error) in print(error)
+            })
+        }
+    }
+}
+
+/*블루투스 관련 확장 MainController*/
 extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
     /*버튼 클릭 시, BLE 연결 뷰 이동*/
     @IBAction func btnBleClick(_ sender: Any) {
@@ -195,7 +309,7 @@ extension MainController: CBPeripheralDelegate, CBCentralManagerDelegate{
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             //연결 객체가 없을 경우, 자동 연결
-            if(BleVO.centralManager == nil || BleVO.characteristic == nil || BleVO.peripheralObj == nil) {
+            if !BleVO.connectState() {
                 if(centralManager.isScanning) {
                     centralManager.stopScan()
                 }
