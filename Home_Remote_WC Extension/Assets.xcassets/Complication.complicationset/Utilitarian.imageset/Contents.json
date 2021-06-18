@@ -1,21 +1,25 @@
 {
   "images" : [
     {
+      "filename" : "appstore_40.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : "<=145"
     },
     {
+      "filename" : "appstore_44.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
     },
     {
+      "filename" : "appstore_44-1.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">145"
     },
     {
+      "filename" : "appstore_50.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">183"
