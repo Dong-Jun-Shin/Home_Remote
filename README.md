@@ -11,6 +11,8 @@
 <br />.Home_Remote.xcodeproj - 프로젝트 파일
 <br />.Home_Remote.xcworkspace - 프로젝트 워크스페이스 파일
 <br />.Home_Remote - 메인 코드 파일 및 메인 스토리보드 파일
+<br />.Home_Remote_WC Extension - 애플워치 APP 컨트롤러 파일
+<br />.Home_Remote_WC - 애플워치 APP 스토리보드 파일
 <br />.MyFrame - 프로젝트에 사용한 프레임워크 파일
 <br />.Pods - 코코아팟 관리 폴더
 <br />.Podfile - 코코아팟 관리 파일
