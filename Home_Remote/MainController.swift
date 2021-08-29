@@ -91,6 +91,17 @@ class MainController: UIViewController {
             // 통계 설정
 //            strData = "?"
 //            sendData(strData: strData)
+        }else{
+            if(self.centralManager.isScanning) {
+                self.centralManager.stopScan()
+            }
+            self.centralManager.scanForPeripherals(withServices: nil, options: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 20, execute: {
+                if self.centralManager.isScanning {
+                    self.centralManager.stopScan()
+                }
+            })
         }
     }
     
